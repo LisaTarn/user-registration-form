@@ -9,57 +9,6 @@
     <form action="#" method="POST">
         <label for="name">Full Name:</label>
         <input type="text" id="name" name="name" required><br><br>
-<script>
-        // There are many ways to pick a DOM node; here we get the form itself and the email
-// input box, as well as the span element into which we will place the error message.
-const form = document.querySelector("form");
-const name = document.getElementById("name");
-const nameError = document.querySelector("#name + span.error");
-
-email.addEventListener("input", (event) => {
-  // Each time the user types something, we check if the
-  // form fields are valid.
-
-  if (name.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    nameError.textContent = ""; // Reset the content of the message
-    nameError.className = "error"; // Reset the visual state of the message
-  } else {
-    // If there is still an error, show the correct error
-    showError();
-  }
-});
-
-form.addEventListener("submit", (event) => {
-  // if the name field is valid, we let the form submit
-  if (!name.validity.valid) {
-    // If it isn't, we display an appropriate error message
-    showError();
-    // Then we prevent the form from being sent by canceling the event
-    event.preventDefault();
-  }
-});
-
-function showError() {
-  if (name.validity.valueMissing) {
-    // If the field is empty,
-    // display the following error message.
-    nameError.textContent = "You need to enter your name";
-  } else if (name.validity.typeMismatch) {
-    // If the field doesn't contain a name,
-    // display the following error message.
-    nameError.textContent = "Entered value needs to be a name.";
-  } else if (name.validity.tooShort) {
-    // If the data is too short,
-    // display the following error message.
-    nameError.textContent = `Name should be at least ${name.minLength} characters; you entered ${name.value.length}.`;
-  }
-
-  // Set the styling appropriately
-  nameError.className = "error active";
-}
-</script>
         
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" required><br><br>
